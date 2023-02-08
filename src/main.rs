@@ -1,5 +1,7 @@
 // Derive the `fmt::Debug` implementation for `Structure`. `Structure`
 // is a structure which contains a single `i32`.
+mod assign2;
+
 #[derive(Debug)]
 struct Structure(i32);
 
@@ -38,4 +40,43 @@ fn main() {
 
     // Pretty print
     println!("{:#?}", peter);
+
+    // Assignment 2
+    let x1: f64 = -40.0;
+    let y1: f64 = assign2::fahrenheit_to_celsius(x1);
+    println!("{:.1}", y1); // -40
+
+    let x5: String = String::from("hello, world!");
+    let y5: String = assign2::capitalize(x5);
+    println!("{}", y5);  // Hello, world!
+
+    let x2: [u64; 5] = [1, 2, 3, 4, 5];
+    let y2: u64 = assign2::sum_array(&x2);
+    println!("{}", y2);  // 15
+
+    let x3: u64 = 10;
+    let y3: u64 = assign2::up3(x3);
+    println!("{}", y3);  // 27
+
+
+    let x4a: u64 = 24;  
+    let x4b: u64 = 60;
+    let y4: u64 = assign2::gcd(x4a, x4b);
+    println!("{}", y4);  // 12
+
+    let x6: u64 = 4;
+    let y6: Vec<u64> = assign2::chooses(x6);
+    for (i, c) in y6.iter().enumerate() {
+        println!("* {}C{} = {}", x6, i, c)
+    }
+
+    let x7a = vec![1, 2, 3];
+    let x7b = vec![4, 5];
+    let y = assign2::zip(x7a, x7b);
+    for (a, b) in y.iter() {
+        println!("* ({}, {})", a, b);
+    }
+    
+    println!("{}", assign2::fibonacci(10));
+    println!("{}", assign2::twelve_days_of_christmas_lyrics());
 }
